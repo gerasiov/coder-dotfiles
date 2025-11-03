@@ -40,11 +40,10 @@ if [ -d "$DOTFILES_HOME_DIR" ]; then
         
         # Create symlink (backup existing file if needed)
         if [ -e "$target" ] && [ ! -L "$target" ]; then
-            echo "Backing up existing file: ${target} -> ${target}.backup"
-            mv "$target" "${target}.backup"
-        fi
-        
-        if [ -L "$target" ]; then
+            backup_file="${target}.backup.$(date +%Y%m%d%H%M%S)"
+            echo "Backing up existing file: ${target} -> ${backup_file}"
+            mv "$target" "${backup_file}"
+        elif [ -L "$target" ]; then
             # Remove existing symlink
             rm "$target"
         fi
