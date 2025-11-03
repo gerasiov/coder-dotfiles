@@ -85,7 +85,7 @@ export HISTDIR=${CONFIG_DIR}/history
 export HISTFILE=${CONFIG_DIR}/history/shellhistory
 
 # Less history
-export LESSHISTFILE=${CONFIG_DIR}/lesshst
+export LESSHISTFILE=${CONFIG_DIR}/history/lesshst
 
 # Process HOST variable - remove leading "ws-" and replace all "--" with "-"
 if [ -n "\${HOST}" ]; then
