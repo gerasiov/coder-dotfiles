@@ -4,15 +4,15 @@ set -e
 # Run unminimize to restore standard packages in minimal Ubuntu containers
 echo "Running unminimize..."
 if command -v unminimize &> /dev/null; then
-    sudo unminimize -y || echo "Warning: unminimize failed or is not applicable"
+    sudo unminimize -y || echo "Warning: unminimize failed. This may be normal if not running in a minimal Ubuntu container."
 else
     echo "unminimize command not found, skipping..."
 fi
 
 # Update package list and install fzf
 echo "Updating package list and installing fzf..."
-sudo apt update
-sudo apt install -y fzf
+sudo apt update || { echo "Error: apt update failed"; exit 1; }
+sudo apt install -y fzf || { echo "Error: Failed to install fzf"; exit 1; }
 
 # Configuration
 DOTFILES_REPO="https://github.com/gerasiov/dotfiles.git"
