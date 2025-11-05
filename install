@@ -19,7 +19,7 @@ PACKAGES_FILE="${SCRIPT_DIR}/packages"
 
 if [ -f "$PACKAGES_FILE" ]; then
     echo "Installing packages from ${PACKAGES_FILE}..."
-    sudo apt install -y $(grep -v '^\s*#' "$PACKAGES_FILE") || { echo "Error: Failed to install packages"; exit 1; }
+    grep -v '^\s*#' "$PACKAGES_FILE" | grep -v '^$' | xargs sudo apt install -y || { echo "Error: Failed to install packages"; exit 1; }
 else
     echo "Error: packages file not found at ${PACKAGES_FILE}"; exit 1;
 fi
