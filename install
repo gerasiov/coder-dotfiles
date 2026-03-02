@@ -113,5 +113,11 @@ unset GIT_COMMITTER_NAME
 unset GIT_COMMITTER_EMAIL
 EOF
 
+# Link claude data
+mkdir -p /workspaces/.config/claude
+[ -e ~/.claude ] && mv ~/.claude{,.backup.$(date +%Y%m%d%H%M%S)}
+ln -s /workspaces/.config/claude ~/.claude
+ln -s /workspaces/.config/.claude.json ~/.claude.json
+
 echo "Dotfiles setup complete!"
 echo "Source ${ENVIRONMENT_LOCAL} in your shell configuration to apply the environment overrides."
