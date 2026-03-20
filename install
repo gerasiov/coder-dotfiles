@@ -113,6 +113,10 @@ unset GIT_COMMITTER_NAME
 unset GIT_COMMITTER_EMAIL
 EOF
 
+# Install claude code
+nix profile remove claude-code || true
+curl -fsSL https://claude.ai/install.sh | bash
+
 # Link claude data
 mkdir -p /workspaces/.config/claude
 [ -e ~/.claude ] && mv ~/.claude{,.backup.$(date +%Y%m%d%H%M%S)}
