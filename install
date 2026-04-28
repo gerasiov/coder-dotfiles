@@ -121,7 +121,7 @@ curl -fsSL https://claude.ai/install.sh | bash
 mkdir -p /workspaces/.config/claude
 [ -e ~/.claude ] && mv ~/.claude{,.backup.$(date +%Y%m%d%H%M%S)}
 ln -s /workspaces/.config/claude ~/.claude
+[ -e ~/.claude.json ] && mv ~/.claude.json{,.backup.$(date +%Y%m%d%H%M%S)}
 ln -s /workspaces/.config/.claude.json ~/.claude.json
 
 echo "Dotfiles setup complete!"
-echo "Source ${ENVIRONMENT_LOCAL} in your shell configuration to apply the environment overrides."
